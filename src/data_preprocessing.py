@@ -80,7 +80,7 @@ def scale(df_clean:pd.DataFrame)->pd.DataFrame:
     scaling=StandardScaler()
     y=df_clean['target']
     df_clean.drop(columns=['target'],inplace=True)
-    df_clean=pd.DataFrame(scaling.fit_transforms(df_clean),columns=df_clean.columns)
+    df_clean=pd.DataFrame(scaling.fit_transform(df_clean),columns=df_clean.columns)
     df_clean['target']=y
     return(df_clean)
 

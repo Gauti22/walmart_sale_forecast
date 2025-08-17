@@ -2,3 +2,7 @@
 2025-08-13 20:07:18 | INFO | my_app | the dataframe has been created from the raw file.
 2025-08-13 20:07:18 | INFO | my_app | The data has been splitted successfully
 2025-08-13 20:07:39 | CRITICAL | my_app | path provided has no file please check
+2025-08-16 21:58:16 | INFO | my_app | the dataframe has been created from the raw file.
+2025-08-16 21:58:16 | INFO | my_app | The data has been splitted successfully
+2025-08-16 21:58:17 | INFO | data_preprocessing | the file has been processed successfully
+2025-08-16 21:58:56 | INFO | data_preprocessing | the file has been processed successfully
