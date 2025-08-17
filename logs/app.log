@@ -1,8 +1,15 @@
-2025-08-13 20:06:59 | INFO | my_app | the dataframe has been created from the raw file.
-2025-08-13 20:07:18 | INFO | my_app | the dataframe has been created from the raw file.
-2025-08-13 20:07:18 | INFO | my_app | The data has been splitted successfully
-2025-08-13 20:07:39 | CRITICAL | my_app | path provided has no file please check
-2025-08-16 21:58:16 | INFO | my_app | the dataframe has been created from the raw file.
-2025-08-16 21:58:16 | INFO | my_app | The data has been splitted successfully
-2025-08-16 21:58:17 | INFO | data_preprocessing | the file has been processed successfully
-2025-08-16 21:58:56 | INFO | data_preprocessing | the file has been processed successfully
+2025-08-17 12:08:36 | INFO | app.py | the data ingestion process has been started
+2025-08-17 12:08:36 | INFO | app.py | the dataframe has been created from the raw file.
+2025-08-17 12:08:36 | INFO | app.py | data has been saved to File_raw folder
+2025-08-17 12:08:36 | INFO | app.py | performing train_test split
+2025-08-17 12:08:36 | INFO | app.py | the train_test has been perfomred from the raw file.
+2025-08-17 12:08:36 | INFO | app.py | data has been saved to train_data
+2025-08-17 12:08:36 | INFO | app.py | the test_data has been perfomred from the raw file.
+2025-08-17 12:08:36 | INFO | app.py | data has been saved to test_data
+2025-08-17 12:08:36 | INFO | app.py | Train and test data saved
+2025-08-17 12:08:37 | INFO | app.py | The data pre-processing stage has started.
+2025-08-17 12:08:37 | INFO | app.py | The file has been read successfully
+2025-08-17 12:08:37 | INFO | app.py | Feature engineering & encoding completed.
+2025-08-17 12:08:37 | INFO | app.py | Outliers removed. Rows reduced from 4826 to 4574.
+2025-08-17 12:08:37 | INFO | app.py | Scaling completed.
+2025-08-17 12:08:37 | INFO | app.py | Processed data saved successfully.

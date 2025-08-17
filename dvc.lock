@@ -1,32 +1,32 @@
 schema: '2.0'
 stages:
   data_ingestion:
-    cmd: python3 src/data_ingestion.py
+    cmd: python -m src.components.data_ingestion
     deps:
-    - path: src/data_ingestion.py
+    - path: src/components/data_ingestion.py
       hash: md5
-      md5: bfb80e331b76a3df67db68781625c324
-      size: 1876
+      md5: f0ac1b6b1af07a74849d1264e544643e
+      size: 2422
     outs:
-    - path: data/raw
+    - path: data/raw_data
       hash: md5
-      md5: bda7f16c1894ba54b5d5218a481ee965.dir
-      size: 357699
-      nfiles: 4
+      md5: dcbdd04bb3142294642ebc741f5d7f65.dir
+      size: 388766
+      nfiles: 2
   data_pre:
-    cmd: python3 src/data_preprocessing.py
+    cmd: python -m src.components.data_preprocessing
     deps:
-    - path: src/data_ingestion.py
+    - path: src/components/data_ingestion.py
       hash: md5
-      md5: bfb80e331b76a3df67db68781625c324
-      size: 1876
-    - path: src/data_preprocessing.py
+      md5: f0ac1b6b1af07a74849d1264e544643e
+      size: 2422
+    - path: src/components/data_preprocessing.py
       hash: md5
-      md5: aa8aca321deda0d891db7850fb2b1b83
-      size: 3684
+      md5: 90b6a6051ca18e1a953a75052afc6dc3
+      size: 3223
     outs:
-    - path: data/processed
+    - path: data/post_pro
       hash: md5
-      md5: 657bf7daaad5a4ddc09b76719d442871.dir
-      size: 743768
+      md5: f172153d38d1b88b6d9876fce1187b2e.dir
+      size: 434966
       nfiles: 1

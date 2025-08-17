@@ -1,16 +1,16 @@
 stages:
   data_ingestion:
-    cmd: python3 src/data_ingestion.py
+    cmd: python -m src.components.data_ingestion
     deps:
-    - src/data_ingestion.py
+    - src/components/data_ingestion.py
     outs:
-    - data/raw
+    - data/raw_data
 
   data_pre:
-    cmd: python3 src/data_preprocessing.py
+    cmd: python -m src.components.data_preprocessing
     deps:
-      - src/data_ingestion.py
-      - src/data_preprocessing.py
+      - src/components/data_ingestion.py
+      - src/components/data_preprocessing.py
     outs:
-      - data/processed
+      - data/post_pro
 

@@ -1,2 +1,4 @@
+[core]
+    remote = data_tracking
 ['remote "data_tracking"']
     url = /Users/gautammehta/Desktop/data_tracking
