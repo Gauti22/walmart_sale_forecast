@@ -5,12 +5,12 @@ stages:
     deps:
     - path: src/components/data_ingestion.py
       hash: md5
-      md5: f0ac1b6b1af07a74849d1264e544643e
+      md5: 020e3fb3e7d4362fb8d1716e6ac53263
       size: 2422
     outs:
     - path: data/raw_data
       hash: md5
-      md5: dcbdd04bb3142294642ebc741f5d7f65.dir
+      md5: 6c3610dbbdb88b23acd2583fb47f69fc.dir
       size: 388766
       nfiles: 2
   data_pre:
@@ -18,15 +18,32 @@ stages:
     deps:
     - path: src/components/data_ingestion.py
       hash: md5
-      md5: f0ac1b6b1af07a74849d1264e544643e
+      md5: 020e3fb3e7d4362fb8d1716e6ac53263
       size: 2422
     - path: src/components/data_preprocessing.py
       hash: md5
-      md5: 90b6a6051ca18e1a953a75052afc6dc3
-      size: 3223
+      md5: b7a82f158daa5ff696a6d4b48b30d6f3
+      size: 3765
     outs:
     - path: data/post_pro
       hash: md5
-      md5: f172153d38d1b88b6d9876fce1187b2e.dir
-      size: 434966
-      nfiles: 1
+      md5: a50aee222094ef7569182e529c57f504.dir
+      size: 579575
+      nfiles: 2
+  model_creation:
+    cmd: python -m src.Model_creation.model_creation
+    deps:
+    - path: src/Model_creation/model_creation.py
+      hash: md5
+      md5: 3576873c783d085fdaf664d12d4546fc
+      size: 2524
+    - path: src/components/data_preprocessing.py
+      hash: md5
+      md5: b7a82f158daa5ff696a6d4b48b30d6f3
+      size: 3765
+    outs:
+    - path: models
+      hash: md5
+      md5: 6356ce93ac411dccc1bafb4b4648fe92.dir
+      size: 389460
+      nfiles: 3

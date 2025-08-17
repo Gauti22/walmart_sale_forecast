@@ -9,10 +9,10 @@ class DataPreprocessing:
         self.scaler = StandardScaler()
         self.encoder = LabelEncoder()
 
-    def data_read(self) -> pd.DataFrame:
+    def data_read(self,path) -> pd.DataFrame:
         logger.info("The data pre-processing stage has started.")
         try:
-            data = pd.read_csv('/Users/gautammehta/Desktop/walmart_sales_forecast_project/data/raw_data/trained/train_data.csv')
+            data = pd.read_csv(path)
             logger.info('The file has been read successfully')
 
             # Date → Season
@@ -38,6 +38,7 @@ class DataPreprocessing:
             raise
 
     def remove_outliers_iqr(self, df: pd.DataFrame, multiplier: int = 2) -> pd.DataFrame:
+        logger.info('outliers removal stage')
         mask = pd.Series(True, index=df.index)
         for col in ['Temperature','Fuel_Price','CPI','Unemployment']:
             Q1, Q3 = df[col].quantile([0.25, 0.75])
@@ -47,9 +48,11 @@ class DataPreprocessing:
 
         df_clean = df.loc[mask].reset_index(drop=True)
         logger.info(f"Outliers removed. Rows reduced from {len(df)} to {len(df_clean)}.")
+        logger.info('outliers has been removed')
         return df_clean
 
     def scale(self, df_clean: pd.DataFrame) -> pd.DataFrame:
+        logger.info('scaing has been performed')
         numeric = df_clean[['Temperature','Fuel_Price','CPI','Unemployment']]
         scaled = pd.DataFrame(self.scaler.fit_transform(numeric), columns=numeric.columns)
 
@@ -62,15 +65,26 @@ class DataPreprocessing:
         logger.info("Scaling completed.")
         return scaled
 
-    def save_file(self, df_clean: pd.DataFrame):
+    def save_file(self, df_clean: pd.DataFrame,l):
+        logger.info('file creation stage')
         path = os.path.join('/Users/gautammehta/Desktop/walmart_sales_forecast_project/data','post_pro')
         os.makedirs(path, exist_ok=True)
-        df_clean.to_csv(os.path.join(path, 'processed_data_train.csv'), index=False)
-        logger.info("Processed data saved successfully.")
+        df_clean.to_csv(os.path.join(path, l), index=False)
+        logger.info("File saved successfully. Stage has been marked completed.")
 
 if __name__=='__main__':
+    #train data
     obj = DataPreprocessing()
-    df = obj.data_read()
+    path='/Users/gautammehta/Desktop/walmart_sales_forecast_project/data/raw_data/trained/train_data.csv'
+    df = obj.data_read(path)
     df = obj.remove_outliers_iqr(df)
     df = obj.scale(df)
-    obj.save_file(df)
+    obj.save_file(df,l='post_pro_train.csv')
+
+    # test data
+    obj1 = DataPreprocessing()
+    path1='/Users/gautammehta/Desktop/walmart_sales_forecast_project/data/raw_data/test/test_data.csv'
+    df1 = obj1.data_read(path1)
+    df1 = obj1.remove_outliers_iqr(df1)
+    df1 = obj1.scale(df1)
+    obj.save_file(df1,l='post_pro_test.csv')

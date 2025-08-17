@@ -9,8 +9,15 @@ stages:
   data_pre:
     cmd: python -m src.components.data_preprocessing
     deps:
-      - src/components/data_ingestion.py
-      - src/components/data_preprocessing.py
+    - src/components/data_ingestion.py
+    - src/components/data_preprocessing.py
     outs:
-      - data/post_pro
+    - data/post_pro
 
+  model_creation:
+    cmd: python -m src.Model_creation.model_creation
+    deps:
+    - src/Model_creation/model_creation.py
+    - src/components/data_preprocessing.py
+    outs:
+    - models

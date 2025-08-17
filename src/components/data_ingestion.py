@@ -28,7 +28,7 @@ class DataIngestion():
             self.logger.info('data has been saved to File_raw folder')
 
             self.logger.info('performing train_test split')
-            train_data,test_data=train_test_split(data,test_size=0.25)
+            train_data,test_data=train_test_split(data,test_size=0.20)
 
             self.logger.info('the train_test has been perfomred from the raw file.')
             os.makedirs(os.path.join(self.ingestion_config.train_data),exist_ok=False)
